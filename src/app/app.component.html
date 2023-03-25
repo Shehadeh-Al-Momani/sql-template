@@ -426,7 +426,11 @@
 
   <!-- Terminal -->
   <div class="terminal" [ngSwitch]="selection.value">
-      <pre *ngSwitchDefault>ng generate component xyz</pre>
+      <pre *ngSwitchDefault>ng generateIF NOT EXISTS(SELECT * FROM TRANSLATION WITH(NOLOCK) WHERE [CODE] = 'SALES' AND LANGUAGE_CODE = 'fr' AND TYPE ='Lookups')
+        BEGIN
+            INSERT [dbo].[TRANSLATION] ([VALUE], [LANGUAGE_CODE], [CODE], [TYPE])
+              VALUES ('Ventes','fr', 'SALES', 'Lookups')
+        END component xyz</pre>
       <pre *ngSwitchCase="'material'">ng add @angular/material</pre>
       <pre *ngSwitchCase="'pwa'">ng add @angular/pwa</pre>
       <pre *ngSwitchCase="'dependency'">ng add _____</pre>
