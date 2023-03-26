@@ -125,7 +125,13 @@ SOFTWARE.
 
 
 
+ngx-clipboard
+MIT
+
 ngx-highlightjs
+MIT
+
+ngx-window-token
 MIT
 
 rxjs
