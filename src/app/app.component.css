@@ -165,8 +165,8 @@ a:hover {
 
 .terminal {
   position: relative;
-  width: 80%;
-  max-width: 600px;
+  width: 100%;
+  max-width: 100%;
   border-radius: 6px;
   padding-top: 45px;
   margin-top: 8px;
@@ -181,9 +181,9 @@ a:hover {
   left: 0;
   height: 4px;
   background: rgb(58, 58, 58);
-  /* color: #c2c3c4; */
+  color: #c2c3c4;
   width: 100%;
-  font-size: 2rem;
+  font-size: 1rem;
   line-height: 0;
   padding: 14px 0;
   text-indent: 4px;
@@ -193,7 +193,9 @@ a:hover {
   font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
   /* color: white; */
   padding: 0 1rem 1rem;
-  margin: 0;
+  /* margin: 0; */
+  margin-top: -10px;
+  margin-bottom: -10px;
 }
 
 .circle-link {
@@ -313,3 +315,35 @@ svg#clouds {
 .sql-keyword { color: blue; }
     .sql-string { color: brown; }
     .sql-number { color: white; }
+
+.mySql::before {
+  content: "\2022 \2022 \2022  MySQL" !important;
+}
+
+.oracle::before {
+  content: "\2022 \2022 \2022  Oracle" !important;
+}
+
+.sql::before {
+  content: "\2022 \2022 \2022  SQL" !important;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 100px 100px 100px;
+  grid-gap: 10px;
+  background-color: #fff;
+  color: #444;
+}
+
+.box {
+  background-color: #444;
+  color: #fff;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 150%;
+}
+
+.bgDark {
+  background-color: rgb(15, 15, 16);
+}

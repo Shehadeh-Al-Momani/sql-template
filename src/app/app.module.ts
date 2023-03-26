@@ -3,8 +3,8 @@ import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppComponent } from './app.component';
-import { DialogService } from './lookups-values-scripts/dialog.service';
-import { LookupsValuesScriptsComponent } from './lookups-values-scripts/lookups-values-scripts.component';
+import { DialogService } from './scripts-dialogs/dialog.service';
+import { LookupsValuesScriptsComponent } from './scripts-dialogs/lookups-values/lookups-values.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDialogModule } from '@angular/material/dialog';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -15,11 +15,14 @@ import {
   HIGHLIGHT_OPTIONS,
 } from 'ngx-highlightjs';
 import { PipesModule } from './pipes/pipes.module';
+import { TranslationsScriptsComponent } from './scripts-dialogs/translations/translations.component';
+import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LookupsValuesScriptsComponent
+    LookupsValuesScriptsComponent,
+    TranslationsScriptsComponent
   ],
   imports: [
     BrowserModule,
@@ -31,23 +34,20 @@ import { PipesModule } from './pipes/pipes.module';
     BrowserAnimationsModule,
     RouterModule.forRoot([]),
     HighlightModule,
-    PipesModule
+    PipesModule,
+    MatSnackBarModule
   ],
   providers: [
     DialogService,
+    MatSnackBar,
     {
       provide: HIGHLIGHT_OPTIONS,
       useValue: <HighlightOptions>{
         lineNumbers: true,
         coreLibraryLoader: () => import('highlight.js/lib/core'),
         lineNumbersLoader: () => import('highlightjs-line-numbers.js'),
-        themePath: 'node_modules/highlight.js/styles/dark.css',
         languages: {
-          sql: () => import('highlight.js/lib/languages/sql'),
-          // cs: () => import('highlight.js/lib/languages/cs'),
-          // tsql: () => import('highlight.js/lib/languages/tsql'),
-          // css: () => import('highlight.js/lib/languages/css'),
-          // xml: () => import('highlight.js/lib/languages/xml'),
+          sql: () => import('highlight.js/lib/languages/sql')
         },
       },
     },

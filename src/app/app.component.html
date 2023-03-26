@@ -13,7 +13,7 @@
   <input type="hidden" #selection>
 
   <div class="card-container">
-    <div class="card card-small" (click)="addPortal()" tabindex="0">
+    <div class="card card-small" (click)="generateLookupsValuesScripts()" tabindex="0">
       <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
         <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
       </svg>
@@ -21,55 +21,56 @@
       <span>Lookups Values</span>
     </div>
 
-    <div class="card card-small" (click)="selection.value = 'material'" tabindex="0">
+    <div class="card card-small" (click)="generateTranslationsScripts()" tabindex="0">
       <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
         <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
       </svg>
 
-      <span>Angular Material</span>
-    </div>
-
-    <div class="card card-small" (click)="selection.value = 'pwa'" tabindex="0">
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
-      </svg>
-
-      <span>Add PWA Support</span>
-    </div>
-
-    <div class="card card-small" (click)="selection.value = 'dependency'" tabindex="0">
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
-      </svg>
-
-      <span>Add Dependency</span>
-    </div>
-
-    <div class="card card-small" (click)="selection.value = 'test'" tabindex="0">
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
-      </svg>
-
-      <span>Run and Watch Tests</span>
-    </div>
-
-    <div class="card card-small" (click)="selection.value = 'build'" tabindex="0">
-      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24">
-        <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" />
-      </svg>
-
-      <span>Build for Production</span>
+      <span>Translations</span>
     </div>
   </div>
 
+  <h1 *ngIf="mySqlScript || oracleScript || sqlScript">The scripts result click on it to copy the code</h1>
   <!-- Terminal -->
-  <div class="terminal">
-    <pre>
-        <code
+  <div class="row">
+    <div *ngIf="mySqlScript" class="terminal mySql col-md-4" (click)="copyScript(mySqlScript, 'MySql')">
+      <pre>
+      <code
+        class="bgDark"
+        [languages]="['sql']"
+        [highlight]="mySqlScript"
+        [lineNumbers]="true"
+        >
+        </code>
+    </pre>
+    </div>
+    <hr />
+    <hr />
+    <hr />
+    <div *ngIf="oracleScript" class="terminal oracle col-md-4" (click)="copyScript(oracleScript, 'Oracle')">
+      <pre>
+      <code
+        class="bgDark"
+        [languages]="['sql']"
+        [highlight]="oracleScript"
+        [lineNumbers]="true"
+        >
+        </code>
+    </pre>
+    </div>
+    <hr />
+    <hr />
+    <hr />
+    <div *ngIf="sqlScript" class="terminal sql col-md-4" (click)="copyScript(sqlScript, 'SQL')">
+      <pre>
+      <code
+        class="bgDark"
         [languages]="['sql']"
         [highlight]="sqlScript"
-        [lineNumbers]="true">
+        [lineNumbers]="true"
+        >
         </code>
-      </pre>
+    </pre>
+    </div>
   </div>
 </div>
