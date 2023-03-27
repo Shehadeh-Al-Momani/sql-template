@@ -1,0 +1,47 @@
+<div class="tabs-content">
+  <form #form="ngForm" class="form edit-user-dialog" (ngSubmit)="save(form)">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="info-block">
+          <div class="info-header">
+            <div>
+              <h3>Generate Lookups Codes Scripts</h3>
+            </div>
+          </div>
+          <div>
+            <div class="info-content block-enabled add-provider">
+              <div class="row align-items-center">
+                <div class="col-md-12">
+                  <div class="form-group mb-3">
+                    <mat-label>
+                      Lookup Code<span class="mandatory">*</span>
+                    </mat-label>
+                    <input matInput maxlength="50" id="lookupCodeID" name="lookupCodeID" type="text"
+                      placeholder="Lookup Code" #lookupCodeID="ngModel" [(ngModel)]="lookupCode" class="form-control"
+                      required />
+                  </div>
+                  <hr>
+                  <div class="form-group mb-3">
+                    <mat-label>
+                      Codes<span class="mandatory">*</span>
+                    </mat-label>
+                    <textarea matInput id="codesID" name="codesID" #codesID="ngModel" [(ngModel)]="codes" required
+                      class="form-control custom-textarea"></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="actions-container">
+          <button class="secondery-button" type="button" (click)="close()">Cancel</button>
+          <div class="form-group login-submit-container mb-0">
+            <button class="primary-button mx-0" type="submit">
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
