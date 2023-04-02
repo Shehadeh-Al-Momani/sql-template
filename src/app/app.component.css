@@ -310,3 +310,14 @@ svg#clouds {
 .bgDark {
   background-color: rgb(15, 15, 16);
 }
+
+.sql-content {
+  display: flex;
+  padding: 0 16px;
+  flex-direction: column;
+  align-items: center;
+}
+
+.fz-8{
+  font-size: 8px;
+}

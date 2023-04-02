@@ -18,8 +18,35 @@ export class AppComponent {
   mySqlScript: string;
   oracleScript: string;
   sqlScript: string;
+  showMySql: boolean = false;
+  showOracle: boolean = false;
+  showSql: boolean = false;
 
   constructor(public dialog: MatDialog, private clipboardApi: ClipboardService, private _messageService: MatSnackBar) {
+  }
+
+  showScript(value: string, key: string) {
+    switch (key) {
+      case 'MySql':
+        this.showMySql = true;
+        this.showOracle = false;
+        this.showSql = false;
+        break;
+      case 'Oracle':
+        this.showOracle = true;
+        this.showMySql = false;
+        this.showSql = false;
+        break;
+      case 'SQL':
+        this.showSql = true;
+        this.showMySql = false;
+        this.showOracle = false;
+        break;
+      default:
+        break;
+    };
+
+    this.copyScript(value, key);
   }
 
   copyScript(value: string, key: string) {
