@@ -1,0 +1,75 @@
+<div class="tabs-content">
+  <form #form="ngForm" class="form edit-user-dialog" (ngSubmit)="save(form)">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="info-block">
+          <div class="info-header">
+            <div>
+              <h3>Generate Insert Data Scripts</h3>
+            </div>
+          </div>
+          <div>
+            <div class="info-content block-enabled add-provider">
+              <div class="row align-items-center">
+                <div class="col-md-12">
+                  <div class="form-group mb-3">
+                    <mat-label>
+                      Table name<span class="mandatory">*</span>
+                    </mat-label>
+                    <input matInput id="tableNameID" name="tableNameID" type="text"
+                      placeholder="Table name" #tableNameID="ngModel" [(ngModel)]="tableName" class="form-control"
+                      required />
+                  </div>
+                  <hr>
+                  <div class="form-group mb-3">
+                    <mat-label>
+                      Columns Names in Where<span class="mandatory">*</span>
+                    </mat-label>
+                    <textarea matInput id="columnsConditionsID" name="columnsConditionsID" type="text"
+                      placeholder="Columns Names" #columnsConditionsID="ngModel" [(ngModel)]="columnsNamesConditions"
+                      class="form-control" required ></textarea>
+                  </div>
+                  <hr>
+                  <div class="form-group mb-3">
+                    <mat-label>
+                      Columns Values in Where<span class="mandatory">*</span>
+                    </mat-label>
+                    <textarea matInput id="columnsValuesConditionsID" name="columnsValuesConditionsID"
+                      type="text" placeholder="Columns Values" #columnsValuesConditionsID="ngModel"
+                      [(ngModel)]="columnsValuesConditions" class="form-control" required></textarea>
+                  </div>
+                  <hr>
+                  <div class="form-group mb-3">
+                    <mat-label>
+                      Columns Names in Insert<span class="mandatory">*</span>
+                    </mat-label>
+                    <textarea matInput id="columnsNamesInsertID" name="columnsNamesInsertID" type="text"
+                      placeholder="Columns Names" #columnsNamesInsertID="ngModel" [(ngModel)]="columnsNamesInsert"
+                      class="form-control" required></textarea>
+                  </div>
+                  <hr>
+                  <div class="form-group mb-3">
+                    <mat-label>
+                      Columns Values in Insert<span class="mandatory">*</span>
+                    </mat-label>
+                    <textarea matInput id="columnsValuesInsertID" name="columnsValuesInsertID"
+                      type="text" placeholder="Columns Values" #columnsValuesInsertID="ngModel"
+                      [(ngModel)]="columnsValuesInsert" class="form-control" required></textarea>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="actions-container">
+          <button class="secondery-button" type="button" (click)="close()">Cancel</button>
+          <div class="form-group login-submit-container mb-0">
+            <button class="primary-button mx-0" type="submit">
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

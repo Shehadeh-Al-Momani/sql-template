@@ -4,6 +4,8 @@ import { LookupsValuesScriptsComponent } from './scripts-dialogs/lookups-values/
 import { TranslationsScriptsComponent } from './scripts-dialogs/translations/translations.component';
 import { ClipboardService } from 'ngx-clipboard';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { AddColumnScriptsComponent } from './scripts-dialogs/add-column/add-column.component';
+import { InsertDataScriptsComponent } from './scripts-dialogs/insert-data/insert-data.component';
 
 @Component({
   selector: 'app-root',
@@ -26,6 +28,48 @@ export class AppComponent {
       duration: 6000,
       panelClass: 'success'
     });
+  }
+
+  generateAddColumnScripts() {
+    this.showManage = true;
+    const dialog = this.dialog.open(AddColumnScriptsComponent, {
+      panelClass: ['animate__animated', 'animate__slideInRight'],
+      position: { right: '0' },
+      height: '100%',
+      width: '70%'
+    });
+
+    dialog.afterClosed().subscribe(
+      (result: { save: boolean, mySqlScript: string, oraclrScript: string, sqlScript: string }) => {
+        this.showManage = false;
+        if (result && result.save) {
+          this.mySqlScript = result.mySqlScript;
+          this.oracleScript = result.oraclrScript;
+          this.sqlScript = result.sqlScript;
+        }
+      }
+    );
+  }
+
+  generateInsertDataScripts() {
+    this.showManage = true;
+    const dialog = this.dialog.open(InsertDataScriptsComponent, {
+      panelClass: ['animate__animated', 'animate__slideInRight'],
+      position: { right: '0' },
+      height: '100%',
+      width: '70%'
+    });
+
+    dialog.afterClosed().subscribe(
+      (result: { save: boolean, mySqlScript: string, oraclrScript: string, sqlScript: string }) => {
+        this.showManage = false;
+        if (result && result.save) {
+          this.mySqlScript = result.mySqlScript;
+          this.oracleScript = result.oraclrScript;
+          this.sqlScript = result.sqlScript;
+        }
+      }
+    );
   }
 
   generateLookupsValuesScripts() {

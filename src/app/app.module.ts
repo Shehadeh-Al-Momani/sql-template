@@ -17,12 +17,16 @@ import {
 import { PipesModule } from './pipes/pipes.module';
 import { TranslationsScriptsComponent } from './scripts-dialogs/translations/translations.component';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { AddColumnScriptsComponent } from './scripts-dialogs/add-column/add-column.component';
+import { InsertDataScriptsComponent } from './scripts-dialogs/insert-data/insert-data.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LookupsValuesScriptsComponent,
-    TranslationsScriptsComponent
+    TranslationsScriptsComponent,
+    AddColumnScriptsComponent,
+    InsertDataScriptsComponent
   ],
   imports: [
     BrowserModule,

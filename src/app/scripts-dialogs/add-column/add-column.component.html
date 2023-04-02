@@ -1,0 +1,66 @@
+<div class="tabs-content">
+  <form #form="ngForm" class="form edit-user-dialog" (ngSubmit)="save(form)">
+    <div class="row">
+      <div class="col-md-8">
+        <div class="info-block">
+          <div class="info-header">
+            <div>
+              <h3>Generate Add Column Scripts</h3>
+            </div>
+          </div>
+          <div>
+            <div class="info-content block-enabled add-provider">
+              <div class="row align-items-center">
+                <div class="col-md-12">
+                  <div class="form-group mb-3">
+                    <mat-label>
+                      Table name<span class="mandatory">*</span>
+                    </mat-label>
+                    <input matInput maxlength="50" id="tableNameID" name="tableNameID" type="text"
+                      placeholder="Table name" #tableNameID="ngModel" [(ngModel)]="tableName" class="form-control"
+                      required />
+                  </div>
+                  <hr>
+                  <div class="form-group mb-3">
+                    <mat-label>
+                      Column name<span class="mandatory">*</span>
+                    </mat-label>
+                    <input matInput maxlength="50" id="columnNameID" name="columnNameID" type="text"
+                      placeholder="Column name" #columnNameID="ngModel" [(ngModel)]="columnName" class="form-control"
+                      required />
+                  </div>
+                  <hr>
+                  <div class="form-group mb-3">
+                    <mat-label>
+                      Column type<span class="mandatory">*</span>
+                    </mat-label>
+                    <input matInput maxlength="50" id="columnTypeID" name="columnTypeID" type="text"
+                      placeholder="Column type" #columnTypeID="ngModel" [(ngModel)]="columnType" class="form-control"
+                      required />
+                  </div>
+                  <hr>
+                  <div class="form-group mb-3">
+                    <mat-label>
+                      Default value<span class="mandatory">*</span>
+                    </mat-label>
+                    <input matInput maxlength="50" id="defaultValueID" name="defaultValueID" type="text"
+                      placeholder="Default value" #defaultValueID="ngModel" [(ngModel)]="defaultValue" class="form-control"
+                      required />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="actions-container">
+          <button class="secondery-button" type="button" (click)="close()">Cancel</button>
+          <div class="form-group login-submit-container mb-0">
+            <button class="primary-button mx-0" type="submit">
+              Submit
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>
