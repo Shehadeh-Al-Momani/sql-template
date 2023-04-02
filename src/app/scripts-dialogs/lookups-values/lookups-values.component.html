@@ -1,15 +1,14 @@
-<div class="tabs-content">
   <form #form="ngForm" class="form edit-user-dialog" (ngSubmit)="save(form)">
     <div class="row">
       <div class="col-md-8">
         <div class="info-block">
           <div class="info-header">
             <div>
-              <h3>Generate Lookups Codes Scripts</h3>
+              <h3>Generate Lookups Scripts</h3>
             </div>
           </div>
           <div>
-            <div class="info-content block-enabled add-provider">
+            <div class="info-content block-enabled">
               <div class="row align-items-center">
                 <div class="col-md-12">
                   <div class="form-group mb-3">
@@ -17,16 +16,15 @@
                       Lookup Code<span class="mandatory">*</span>
                     </mat-label>
                     <input matInput maxlength="50" id="lookupCodeID" name="lookupCodeID" type="text"
-                      placeholder="Lookup Code" #lookupCodeID="ngModel" [(ngModel)]="lookupCode" class="form-control"
+                      placeholder="Lookup Code" #lookupCodeID="ngModel" [(ngModel)]="lookupCode" class="form-control w-100"
                       required />
                   </div>
-                  <hr>
                   <div class="form-group mb-3">
                     <mat-label>
                       Codes<span class="mandatory">*</span>
                     </mat-label>
                     <textarea matInput id="codesID" name="codesID" #codesID="ngModel" [(ngModel)]="codes" required
-                      class="form-control custom-textarea"></textarea>
+                      class="form-control custom-textarea" placeholder="Codes"></textarea>
                   </div>
                 </div>
               </div>
@@ -44,4 +42,3 @@
       </div>
     </div>
   </form>
-</div>

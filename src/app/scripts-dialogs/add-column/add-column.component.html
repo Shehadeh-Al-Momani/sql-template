@@ -1,4 +1,3 @@
-<div class="tabs-content">
   <form #form="ngForm" class="form edit-user-dialog" (ngSubmit)="save(form)">
     <div class="row">
       <div class="col-md-8">
@@ -9,7 +8,7 @@
             </div>
           </div>
           <div>
-            <div class="info-content block-enabled add-provider">
+            <div class="info-content block-enabled">
               <div class="row align-items-center">
                 <div class="col-md-12">
                   <div class="form-group mb-3">
@@ -17,34 +16,31 @@
                       Table name<span class="mandatory">*</span>
                     </mat-label>
                     <input matInput maxlength="50" id="tableNameID" name="tableNameID" type="text"
-                      placeholder="Table name" #tableNameID="ngModel" [(ngModel)]="tableName" class="form-control"
+                      placeholder="Table name" #tableNameID="ngModel" [(ngModel)]="tableName" class="form-control w-100"
                       required />
                   </div>
-                  <hr>
                   <div class="form-group mb-3">
                     <mat-label>
                       Column name<span class="mandatory">*</span>
                     </mat-label>
                     <input matInput maxlength="50" id="columnNameID" name="columnNameID" type="text"
-                      placeholder="Column name" #columnNameID="ngModel" [(ngModel)]="columnName" class="form-control"
+                      placeholder="Column name" #columnNameID="ngModel" [(ngModel)]="columnName" class="form-control w-100"
                       required />
                   </div>
-                  <hr>
                   <div class="form-group mb-3">
                     <mat-label>
                       Column type<span class="mandatory">*</span>
                     </mat-label>
                     <input matInput maxlength="50" id="columnTypeID" name="columnTypeID" type="text"
-                      placeholder="Column type" #columnTypeID="ngModel" [(ngModel)]="columnType" class="form-control"
+                      placeholder="Column type" #columnTypeID="ngModel" [(ngModel)]="columnType" class="form-control w-100"
                       required />
                   </div>
-                  <hr>
                   <div class="form-group mb-3">
                     <mat-label>
                       Default value<span class="mandatory">*</span>
                     </mat-label>
                     <input matInput maxlength="50" id="defaultValueID" name="defaultValueID" type="text"
-                      placeholder="Default value" #defaultValueID="ngModel" [(ngModel)]="defaultValue" class="form-control"
+                      placeholder="Default value" #defaultValueID="ngModel" [(ngModel)]="defaultValue" class="form-control w-100"
                       required />
                   </div>
                 </div>
@@ -63,4 +59,3 @@
       </div>
     </div>
   </form>
-</div>

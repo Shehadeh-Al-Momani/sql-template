@@ -1,5 +1,4 @@
-<div class="tabs-content">
-  <form #form="ngForm" class="form edit-user-dialog" (ngSubmit)="save(form)">
+  <form #form="ngForm" class="form edit-user-dialog w-100" (ngSubmit)="save(form)">
     <div class="row">
       <div class="col-md-8">
         <div class="info-block">
@@ -9,7 +8,7 @@
             </div>
           </div>
           <div>
-            <div class="info-content block-enabled add-provider">
+            <div class="info-content block-enabled">
               <div class="row align-items-center">
                 <div class="col-md-12">
                   <div class="form-group mb-3">
@@ -17,43 +16,43 @@
                       Translation Type<span class="mandatory">*</span>
                     </mat-label>
                     <input matInput maxlength="50" id="translationTypeID" name="translationTypeID" type="text"
-                      placeholder="Translation Type" #translationTypeID="ngModel" [(ngModel)]="translationType" class="form-control"
+                      placeholder="Translation Type" #translationTypeID="ngModel" [(ngModel)]="translationType" class="form-control w-100"
                       required />
                   </div>
                   <div class="form-group mb-3">
                     <mat-label>
-                      Translations Codes<span class="mandatory">*</span>
+                      Codes<span class="mandatory">*</span>
                     </mat-label>
                     <textarea matInput id="codesID" name="codesID" #codesID="ngModel" [(ngModel)]="codes" required
-                      class="form-control custom-textarea"></textarea>
+                      placeholder="Translations Codes" class="form-control custom-textarea"></textarea>
                   </div>
                   <div class="form-group mb-3">
                     <mat-label>
-                      Translations Value En<span class="mandatory">*</span>
+                      Values (English)<span class="mandatory">*</span>
                     </mat-label>
                     <textarea matInput id="En" name="En" #En="ngModel" [(ngModel)]="enValues" required
-                      class="form-control custom-textarea"></textarea>
+                      placeholder="Values (English)" class="form-control custom-textarea"></textarea>
                   </div>
                   <div class="form-group mb-3">
                     <mat-label>
-                      Translations Value Ar<span class="mandatory">*</span>
+                      Values (Arabic)<span class="mandatory">*</span>
                     </mat-label>
                     <textarea matInput id="Ar" name="Ar" #Ar="ngModel" [(ngModel)]="arValues" required
-                      class="form-control custom-textarea"></textarea>
+                      placeholder="Values (Arabic)" class="form-control custom-textarea"></textarea>
                   </div>
                   <div class="form-group mb-3">
                     <mat-label>
-                      Translations Value De<span class="mandatory">*</span>
+                      Values (German)<span class="mandatory">*</span>
                     </mat-label>
                     <textarea matInput id="De" name="De" #De="ngModel" [(ngModel)]="deValues" required
-                      class="form-control custom-textarea"></textarea>
+                      placeholder="Values (German)" class="form-control custom-textarea"></textarea>
                   </div>
                   <div class="form-group mb-3">
                     <mat-label>
-                      Translations Value Fr<span class="mandatory">*</span>
+                      Values (French)<span class="mandatory">*</span>
                     </mat-label>
                     <textarea matInput id="Fr" name="Fr" #Fr="ngModel" [(ngModel)]="frValues" required
-                      class="form-control custom-textarea"></textarea>
+                      placeholder="Values (French)" class="form-control custom-textarea"></textarea>
                   </div>
                 </div>
               </div>
@@ -71,4 +70,3 @@
       </div>
     </div>
   </form>
-</div>
