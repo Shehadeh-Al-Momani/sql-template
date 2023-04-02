@@ -21,6 +21,7 @@
     "@angular/platform-browser": "~11.2.5",
     "@angular/platform-browser-dynamic": "~11.2.5",
     "@angular/router": "~11.2.5",
+    "bootstrap": "^5.2.3",
     "highlight.js": "^10.7.3",
     "highlightjs-line-numbers.js": "^2.8.0",
     "ngx-clipboard": "^14.0.2",

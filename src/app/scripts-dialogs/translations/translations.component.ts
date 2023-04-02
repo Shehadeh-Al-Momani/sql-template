@@ -140,6 +140,6 @@ export class TranslationsScriptsComponent implements OnInit {
       }
     };
 
-    return sqlStatements.join();
+    return `-- Translation\r\n${sqlStatements.join('\n')}`;
   }
 }

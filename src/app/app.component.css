@@ -295,27 +295,6 @@ svg#clouds {
   }
 }
 
-#sqlquery {
-  font-family: monospace;
-  color: black;
-}
-
-#sqlquery .keyword {
-  color: blue;
-}
-
-#sqlquery .string {
-  color: brown;
-}
-
-#sqlquery .number {
-  color: white;
-}
-
-.sql-keyword { color: blue; }
-    .sql-string { color: brown; }
-    .sql-number { color: white; }
-
 .mySql::before {
   content: "\2022 \2022 \2022  MySQL" !important;
 }
@@ -326,22 +305,6 @@ svg#clouds {
 
 .sql::before {
   content: "\2022 \2022 \2022  SQL" !important;
-}
-
-.wrapper {
-  display: grid;
-  grid-template-columns: 100px 100px 100px;
-  grid-gap: 10px;
-  background-color: #fff;
-  color: #444;
-}
-
-.box {
-  background-color: #444;
-  color: #fff;
-  border-radius: 5px;
-  padding: 20px;
-  font-size: 150%;
 }
 
 .bgDark {

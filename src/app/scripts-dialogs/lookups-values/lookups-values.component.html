@@ -1,44 +1,72 @@
-  <form #form="ngForm" class="form edit-user-dialog" (ngSubmit)="save(form)">
-    <div class="row">
-      <div class="col-md-8">
-        <div class="info-block">
-          <div class="info-header">
-            <div>
-              <h3>Generate Lookups Scripts</h3>
-            </div>
-          </div>
+<form #form="ngForm" class="form edit-user-dialog" (ngSubmit)="save(form)">
+  <div class="row">
+    <div class="col-md-8">
+      <div class="info-block">
+        <div class="info-header">
           <div>
-            <div class="info-content block-enabled">
-              <div class="row align-items-center">
-                <div class="col-md-12">
-                  <div class="form-group mb-3">
-                    <mat-label>
-                      Lookup Code<span class="mandatory">*</span>
-                    </mat-label>
-                    <input matInput maxlength="50" id="lookupCodeID" name="lookupCodeID" type="text"
-                      placeholder="Lookup Code" #lookupCodeID="ngModel" [(ngModel)]="lookupCode" class="form-control w-100"
-                      required />
-                  </div>
-                  <div class="form-group mb-3">
-                    <mat-label>
-                      Codes<span class="mandatory">*</span>
-                    </mat-label>
-                    <textarea matInput id="codesID" name="codesID" #codesID="ngModel" [(ngModel)]="codes" required
-                      class="form-control custom-textarea" placeholder="Codes"></textarea>
-                  </div>
+            <h3>Generate Lookups Scripts</h3>
+          </div>
+        </div>
+        <div>
+          <div class="info-content block-enabled">
+            <div class="row align-items-center">
+              <div class="col-md-12">
+                <div class="form-group mb-3">
+                  <mat-label>
+                    Lookup Code<span class="mandatory">*</span>
+                  </mat-label>
+                  <input matInput maxlength="50" id="lookupCodeID" name="lookupCodeID" type="text"
+                    placeholder="Lookup Code" #lookupCodeID="ngModel" [(ngModel)]="lookupCode"
+                    class="form-control w-100" required />
+                </div>
+                <div class="form-group mb-3">
+                  <mat-label>
+                    Codes<span class="mandatory">*</span>
+                  </mat-label>
+                  <textarea matInput id="codesID" name="codesID" #codesID="ngModel" [(ngModel)]="codes" required
+                    class="form-control custom-textarea" placeholder="Codes"></textarea>
+                </div>
+                <div class="form-group mb-3">
+                  <mat-label>
+                    Values (English)<span class="mandatory">*</span>
+                  </mat-label>
+                  <textarea matInput id="En" name="En" #En="ngModel" [(ngModel)]="enValues" required
+                    placeholder="Values (English)" class="form-control custom-textarea"></textarea>
+                </div>
+                <div class="form-group mb-3">
+                  <mat-label>
+                    Values (Arabic)<span class="mandatory">*</span>
+                  </mat-label>
+                  <textarea matInput id="Ar" name="Ar" #Ar="ngModel" [(ngModel)]="arValues" required
+                    placeholder="Values (Arabic)" class="form-control custom-textarea"></textarea>
+                </div>
+                <div class="form-group mb-3">
+                  <mat-label>
+                    Values (German)<span class="mandatory">*</span>
+                  </mat-label>
+                  <textarea matInput id="De" name="De" #De="ngModel" [(ngModel)]="deValues" required
+                    placeholder="Values (German)" class="form-control custom-textarea"></textarea>
+                </div>
+                <div class="form-group mb-3">
+                  <mat-label>
+                    Values (French)<span class="mandatory">*</span>
+                  </mat-label>
+                  <textarea matInput id="Fr" name="Fr" #Fr="ngModel" [(ngModel)]="frValues" required
+                    placeholder="Values (French)" class="form-control custom-textarea"></textarea>
                 </div>
               </div>
             </div>
           </div>
         </div>
-        <div class="actions-container">
-          <button class="secondery-button" type="button" (click)="close()">Cancel</button>
-          <div class="form-group login-submit-container mb-0">
-            <button class="primary-button mx-0" type="submit">
-              Submit
-            </button>
-          </div>
+      </div>
+      <div class="actions-container">
+        <button class="secondery-button" type="button" (click)="close()">Cancel</button>
+        <div class="form-group login-submit-container mb-0">
+          <button class="primary-button mx-0" type="submit">
+            Submit
+          </button>
         </div>
       </div>
     </div>
-  </form>
+  </div>
+</form>
