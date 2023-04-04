@@ -1,0 +1,100 @@
+<form #form="ngForm" class="form edit-user-dialog" (ngSubmit)="save(form)">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="info-block">
+        <div class="info-header">
+          <div>
+            <h3>Generate System Menus Scripts</h3>
+          </div>
+        </div>
+        <div>
+          <div class="info-content block-enabled">
+            <div class="row align-items-center">
+              <div class="col-md-12">
+                <div class="form-group mb-3">
+                  <mat-label>
+                    Module Code<span class="mandatory">*</span>
+                  </mat-label>
+                  <input matInput maxlength="50" id="moduleCodeID" name="moduleCodeID" type="text"
+                    placeholder="Module Code" #moduleCodeID="ngModel" [(ngModel)]="moduleCode"
+                    class="form-control w-100" required />
+                </div>
+                <div class="form-group mb-3">
+                  <mat-label>
+                    Codes<span class="mandatory">*</span>
+                  </mat-label>
+                  <textarea matInput id="codesID" name="codesID" #codesID="ngModel" [(ngModel)]="codes" required
+                    class="form-control custom-textarea" placeholder="Codes"></textarea>
+                </div>
+                <div class="form-group mb-3">
+                  <mat-label>
+                    Routes<span class="mandatory">*</span>
+                  </mat-label>
+                  <textarea matInput id="routesID" name="routesID" #routesID="ngModel" [(ngModel)]="routes" required
+                    class="form-control custom-textarea" placeholder="Routes"></textarea>
+                </div>
+                <div class="form-group mb-3">
+                  <mat-label>
+                    Parent Codes<span class="mandatory">*</span>
+                  </mat-label>
+                  <textarea matInput id="parentCodesID" name="parentCodesID" #parentCodesID="ngModel" [(ngModel)]="parentCodes" required
+                    class="form-control custom-textarea" placeholder="Parent Codes"></textarea>
+                </div>
+                <div class="form-group mb-3">
+                  <mat-label>
+                    Sequences<span class="mandatory">*</span>
+                  </mat-label>
+                  <textarea matInput id="sequencesID" name="sequencesID" #sequencesID="ngModel" [(ngModel)]="sequences" required
+                    class="form-control custom-textarea" placeholder="Sequences"></textarea>
+                </div>
+                <div class="form-group mb-3">
+                  <mat-label>
+                    Permissions<span class="mandatory">*</span>
+                  </mat-label>
+                  <textarea matInput id="permissionsID" name="permissionsID" #permissionsID="ngModel" [(ngModel)]="permissions" required
+                    class="form-control custom-textarea" placeholder="Permissions"></textarea>
+                </div>
+                <div class="form-group mb-3">
+                  <mat-label>
+                    Values (English)<span class="mandatory">*</span>
+                  </mat-label>
+                  <textarea matInput id="En" name="En" #En="ngModel" [(ngModel)]="enValues" required
+                    placeholder="Values (English)" class="form-control custom-textarea"></textarea>
+                </div>
+                <div class="form-group mb-3">
+                  <mat-label>
+                    Values (Arabic)<span class="mandatory">*</span>
+                  </mat-label>
+                  <textarea matInput id="Ar" name="Ar" #Ar="ngModel" [(ngModel)]="arValues" required
+                    placeholder="Values (Arabic)" class="form-control custom-textarea"></textarea>
+                </div>
+                <div class="form-group mb-3">
+                  <mat-label>
+                    Values (German)<span class="mandatory">*</span>
+                  </mat-label>
+                  <textarea matInput id="De" name="De" #De="ngModel" [(ngModel)]="deValues" required
+                    placeholder="Values (German)" class="form-control custom-textarea"></textarea>
+                </div>
+                <div class="form-group mb-3">
+                  <mat-label>
+                    Values (French)<span class="mandatory">*</span>
+                  </mat-label>
+                  <textarea matInput id="Fr" name="Fr" #Fr="ngModel" [(ngModel)]="frValues" required
+                    placeholder="Values (French)" class="form-control custom-textarea"></textarea>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="actions-container">
+        <button class="secondery-button" type="button" (click)="close()">Cancel</button>
+        <div class="form-group login-submit-container mb-0">
+          <button class="primary-button mx-0" type="submit">
+            Submit
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>

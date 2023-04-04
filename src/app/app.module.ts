@@ -19,6 +19,7 @@ import { TranslationsScriptsComponent } from './scripts-dialogs/translations/tra
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { AddColumnScriptsComponent } from './scripts-dialogs/add-column/add-column.component';
 import { InsertDataScriptsComponent } from './scripts-dialogs/insert-data/insert-data.component';
+import { SystemMenusScriptsComponent } from './scripts-dialogs/system-menus/system-menus.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { InsertDataScriptsComponent } from './scripts-dialogs/insert-data/insert
     LookupsValuesScriptsComponent,
     TranslationsScriptsComponent,
     AddColumnScriptsComponent,
-    InsertDataScriptsComponent
+    InsertDataScriptsComponent,
+    SystemMenusScriptsComponent
   ],
   imports: [
     BrowserModule,
