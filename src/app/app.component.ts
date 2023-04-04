@@ -46,8 +46,6 @@ export class AppComponent {
       default:
         break;
     };
-
-    this.copyScript(value, key);
   }
 
   copyScript(value: string, key: string) {

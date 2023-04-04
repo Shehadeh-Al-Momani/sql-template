@@ -52,7 +52,7 @@
   </div>
 
   <div class="sql-content" *ngIf="mySqlScript || oracleScript || sqlScript">
-    <h4>The scripts result on these databases choose one of them to copy and view the code</h4>
+    <h4>The scripts result on these databases choose one of them to view the source code</h4>
 
     <div class="card-container">
       <div class="card card-small" (click)="showScript(mySqlScript, 'MySql')" tabindex="0">
@@ -90,6 +90,17 @@
     </div>
 
     <div *ngIf="showMySql" class="terminal mySql">
+      <div class="d-flex code-card">
+        <div class="p-2">&lt;/&gt; MySQL</div>
+        <div class="card card-small copy" (click)="copyScript(mySqlScript, 'MySql')" tabindex="0">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-files"
+            viewBox="0 0 16 16">
+            <path
+              d="M13 0H6a2 2 0 0 0-2 2 2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2 2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 13V4a2 2 0 0 0-2-2H5a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1zM3 4a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4z" />
+          </svg>
+          <span>Copy</span>
+        </div>
+      </div>
       <pre>
         <code class="bgDark" [languages]="['sql']"  [highlight]="mySqlScript" [lineNumbers]="true" >
         </code>
@@ -97,6 +108,17 @@
     </div>
 
     <div *ngIf="showOracle" class="terminal oracle">
+      <div class="d-flex code-card">
+        <div class="p-2">&lt;/&gt; Oracle</div>
+        <div class="card card-small copy" (click)="copyScript(oracleScript, 'Oracle')" tabindex="0">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-files"
+            viewBox="0 0 16 16">
+            <path
+              d="M13 0H6a2 2 0 0 0-2 2 2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2 2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 13V4a2 2 0 0 0-2-2H5a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1zM3 4a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4z" />
+          </svg>
+          <span>Copy</span>
+        </div>
+      </div>
       <pre>
         <code class="bgDark" [languages]="['sql']"  [highlight]="oracleScript" [lineNumbers]="true" >
         </code>
@@ -104,6 +126,17 @@
     </div>
 
     <div *ngIf="showSql" class="terminal sql">
+      <div class="d-flex code-card">
+        <div class="p-2">&lt;/&gt; SQL</div>
+        <div class="card card-small copy" (click)="copyScript(sqlScript, 'SQL')" tabindex="0">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-files"
+            viewBox="0 0 16 16">
+            <path
+              d="M13 0H6a2 2 0 0 0-2 2 2 2 0 0 0-2 2v10a2 2 0 0 0 2 2h7a2 2 0 0 0 2-2 2 2 0 0 0 2-2V2a2 2 0 0 0-2-2zm0 13V4a2 2 0 0 0-2-2H5a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1zM3 4a1 1 0 0 1 1-1h7a1 1 0 0 1 1 1v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V4z" />
+          </svg>
+          <span>Copy</span>
+        </div>
+      </div>
       <pre>
         <code class="bgDark" [languages]="['sql']"  [highlight]="sqlScript" [lineNumbers]="true" >
         </code>
@@ -112,98 +145,3 @@
   </div>
 
 </div>
-
-<!-- Terminal -->
-<!-- <div class="container" *ngIf="mySqlScript || oracleScript || sqlScript">
-  <div class="row">
-    <div class="col-md-4">
-      <div *ngIf="mySqlScript" class="terminal mySql" (click)="copyScript(mySqlScript, 'MySql')">
-        <pre>
-    <code
-      class="bgDark"
-      [languages]="['sql']"
-      [highlight]="mySqlScript"
-      [lineNumbers]="true"
-      >
-      </code>
-  </pre>
-      </div>
-      <hr />
-  <hr />
-  <hr />
-    </div>
-    <div class="col-md-4">
-      <div *ngIf="oracleScript" class="terminal oracle" (click)="copyScript(oracleScript, 'Oracle')">
-        <pre>
-    <code
-      class="bgDark"
-      [languages]="['sql']"
-      [highlight]="oracleScript"
-      [lineNumbers]="true"
-      >
-      </code>
-  </pre>
-      </div>
-      <hr />
-  <hr />
-  <hr />
-    </div>
-    <div class="col-md-4">
-      <div *ngIf="sqlScript" class="terminal sql" (click)="copyScript(sqlScript, 'SQL')">
-        <pre>
-    <code
-      class="bgDark"
-      [languages]="['sql']"
-      [highlight]="sqlScript"
-      [lineNumbers]="true"
-      >
-      </code>
-  </pre>
-      </div>
-    </div>
-  </div>
-</div> -->
-
-<!-- <div class="container">
-  <div class="row">
-    <div class="col-md-4">
-      <div *ngIf="mySqlScript" class="terminal mySql" (click)="copyScript(mySqlScript, 'MySql')">
-        <pre>
-        <code
-          class="bgDark"
-          [languages]="['sql']"
-          [highlight]="mySqlScript"
-          [lineNumbers]="true"
-          >
-          </code>
-      </pre>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div *ngIf="oracleScript" class="terminal oracle" (click)="copyScript(oracleScript, 'Oracle')">
-        <pre>
-        <code
-          class="bgDark"
-          [languages]="['sql']"
-          [highlight]="oracleScript"
-          [lineNumbers]="true"
-          >
-          </code>
-      </pre>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div *ngIf="sqlScript" class="terminal sql" (click)="copyScript(sqlScript, 'SQL')">
-        <pre>
-        <code
-          class="bgDark"
-          [languages]="['sql']"
-          [highlight]="sqlScript"
-          [lineNumbers]="true"
-          >
-          </code>
-      </pre>
-      </div>
-    </div>
-  </div>
-</div> -->
