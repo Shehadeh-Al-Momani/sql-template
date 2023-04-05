@@ -13,39 +13,11 @@
               <div class="col-md-12">
                 <div class="form-group mb-3">
                   <mat-label>
-                    Module Code<span class="mandatory">*</span>
+                    App Code<span class="mandatory">*</span>
                   </mat-label>
-                  <input matInput maxlength="50" id="moduleCodeID" name="moduleCodeID" type="text"
-                    placeholder="Module Code" #moduleCodeID="ngModel" [(ngModel)]="moduleCode"
+                  <input matInput maxlength="50" id="appCodeID" name="appCodeID" type="text"
+                    placeholder="App Code" #appCodeID="ngModel" [(ngModel)]="appCode"
                     class="form-control w-100" required />
-                </div>
-                <div class="form-group mb-3">
-                  <mat-label>
-                    Codes<span class="mandatory">*</span>
-                  </mat-label>
-                  <textarea matInput id="codesID" name="codesID" #codesID="ngModel" [(ngModel)]="codes" required
-                    class="form-control custom-textarea" placeholder="Codes"></textarea>
-                </div>
-                <div class="form-group mb-3">
-                  <mat-label>
-                    Routes
-                  </mat-label>
-                  <textarea matInput id="routesID" name="routesID" #routesID="ngModel" [(ngModel)]="routes" required
-                    class="form-control custom-textarea" placeholder="Routes"></textarea>
-                </div>
-                <div class="form-group mb-3">
-                  <mat-label>
-                    Parent Codes
-                  </mat-label>
-                  <textarea matInput id="parentCodesID" name="parentCodesID" #parentCodesID="ngModel" [(ngModel)]="parentCodes" required
-                    class="form-control custom-textarea" placeholder="Parent Codes"></textarea>
-                </div>
-                <div class="form-group mb-3">
-                  <mat-label>
-                    Sequences<span class="mandatory">*</span>
-                  </mat-label>
-                  <textarea matInput id="sequencesID" name="sequencesID" #sequencesID="ngModel" [(ngModel)]="sequences" required
-                    class="form-control custom-textarea" placeholder="Sequences"></textarea>
                 </div>
                 <div class="form-group mb-3">
                   <mat-label>
@@ -53,6 +25,13 @@
                   </mat-label>
                   <textarea matInput id="permissionsID" name="permissionsID" #permissionsID="ngModel" [(ngModel)]="permissions" required
                     class="form-control custom-textarea" placeholder="Permissions"></textarea>
+                </div>
+                <div class="form-group mb-3">
+                  <mat-label>
+                    Roles
+                  </mat-label>
+                  <textarea matInput id="rolesID" name="rolesID" #rolesID="ngModel" [(ngModel)]="roles" required
+                    class="form-control custom-textarea" placeholder="Roles"></textarea>
                 </div>
                 <div class="form-group mb-3">
                   <mat-label>

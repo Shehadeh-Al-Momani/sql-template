@@ -7,6 +7,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { AddColumnScriptsComponent } from './scripts-dialogs/add-column/add-column.component';
 import { InsertDataScriptsComponent } from './scripts-dialogs/insert-data/insert-data.component';
 import { SystemMenusScriptsComponent } from './scripts-dialogs/system-menus/system-menus.component';
+import { PermissionsScriptsComponent } from './scripts-dialogs/permissions/permissions.component';
 
 @Component({
   selector: 'app-root',
@@ -143,6 +144,27 @@ export class AppComponent {
   generateSystemMenusScripts() {
     this.showManage = true;
     const dialog = this.dialog.open(SystemMenusScriptsComponent, {
+      panelClass: ['animate__animated', 'animate__slideInRight'],
+      position: { right: '0' },
+      height: '100%',
+      width: '70%'
+    });
+
+    dialog.afterClosed().subscribe(
+      (result: { save: boolean, mySqlScript: string, oraclrScript: string, sqlScript: string }) => {
+        this.showManage = false;
+        if (result && result.save) {
+          this.mySqlScript = result.mySqlScript;
+          this.oracleScript = result.oraclrScript;
+          this.sqlScript = result.sqlScript;
+        }
+      }
+    );
+  }
+
+  generatePermissionsScripts() {
+    this.showManage = true;
+    const dialog = this.dialog.open(PermissionsScriptsComponent, {
       panelClass: ['animate__animated', 'animate__slideInRight'],
       position: { right: '0' },
       height: '100%',

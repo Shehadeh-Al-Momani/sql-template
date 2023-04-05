@@ -20,6 +20,7 @@ import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
 import { AddColumnScriptsComponent } from './scripts-dialogs/add-column/add-column.component';
 import { InsertDataScriptsComponent } from './scripts-dialogs/insert-data/insert-data.component';
 import { SystemMenusScriptsComponent } from './scripts-dialogs/system-menus/system-menus.component';
+import { PermissionsScriptsComponent } from './scripts-dialogs/permissions/permissions.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { SystemMenusScriptsComponent } from './scripts-dialogs/system-menus/syst
     TranslationsScriptsComponent,
     AddColumnScriptsComponent,
     InsertDataScriptsComponent,
-    SystemMenusScriptsComponent
+    SystemMenusScriptsComponent,
+    PermissionsScriptsComponent
   ],
   imports: [
     BrowserModule,
