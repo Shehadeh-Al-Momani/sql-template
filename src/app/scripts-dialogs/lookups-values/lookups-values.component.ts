@@ -200,7 +200,7 @@ export class LookupsValuesScriptsComponent implements OnInit {
   BEGIN
       INSERT [dbo].[TRANSLATION] ([VALUE], [LANGUAGE_CODE], [CODE], [TYPE])
         VALUES (${langCode === 'ar' ? 'N' : ''}'${langValue}','${langCode}', '${code}', '${translationType}')
-  END;\n`;
+  END\n`;
 
         sqlStatements.push(sqlStatement);
       }
