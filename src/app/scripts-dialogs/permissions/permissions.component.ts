@@ -57,7 +57,7 @@ export class PermissionsScriptsComponent implements OnInit {
         let role = rolesArr[i] ?? null;
         for (let j = 0; j < permissionsArr.length; j++) {
           let permission = permissionsArr[j] ?? null;
-          let insertStatement = `${i == 0 && j == 0 ?  `-- ASSIGN PRMISSIONS TO ROLE\r\n` : ``}INSERT INTO \`ROLE_PERMISSIONS\`(\`PERMISSION_ID\`,\`ROLE_ID\`,\`CREATE_STAMP\`,\`CREATED_BY\`)\r\nSELECT * FROM (\r\n\tSELECT (SELECT PERMISSION_ID  FROM PERMISSIONS WHERE CODE= '${permission}' AND APP_ID = @APP_ID) AS PERMISSION_ID,\r\n    (SELECT ROLE_ID FROM ROLES WHERE CODE= '${role}' AND APP_ID = @APP_ID) AS ROLE_ID , CURRENT_TIMESTAMP, 1) AS Temp\r\nWHERE NOT EXISTS (SELECT \`PERMISSION_ID\` , \`ROLE_ID\` FROM ROLE_PERMISSIONS WHERE \`PERMISSION_ID\` = (SELECT PERMISSION_ID  FROM PERMISSIONS WHERE CODE= '${permission}' AND APP_ID = @APP_ID)\r\nAND ROLE_ID = (SELECT ROLE_ID FROM ROLES WHERE CODE= '${role}' AND APP_ID = @APP_ID)) LIMIT 1;\n`;
+          let insertStatement = `${i == 0 && j == 0 ? `-- ASSIGN PRMISSIONS TO ROLE\r\n` : ``}INSERT INTO \`ROLE_PERMISSIONS\`(\`PERMISSION_ID\`,\`ROLE_ID\`,\`CREATE_STAMP\`,\`CREATED_BY\`)\r\nSELECT * FROM (\r\n\tSELECT (SELECT PERMISSION_ID  FROM PERMISSIONS WHERE CODE= '${permission}' AND APP_ID = @APP_ID) AS PERMISSION_ID,\r\n    (SELECT ROLE_ID FROM ROLES WHERE CODE= '${role}' AND APP_ID = @APP_ID) AS ROLE_ID , CURRENT_TIMESTAMP, 1) AS Temp\r\nWHERE NOT EXISTS (SELECT \`PERMISSION_ID\` , \`ROLE_ID\` FROM ROLE_PERMISSIONS WHERE \`PERMISSION_ID\` = (SELECT PERMISSION_ID  FROM PERMISSIONS WHERE CODE= '${permission}' AND APP_ID = @APP_ID)\r\nAND ROLE_ID = (SELECT ROLE_ID FROM ROLES WHERE CODE= '${role}' AND APP_ID = @APP_ID)) LIMIT 1;\n`;
           insertStatements.push(insertStatement);
         };
       };
@@ -86,7 +86,7 @@ export class PermissionsScriptsComponent implements OnInit {
         let role = rolesArr[i] ?? null;
         for (let j = 0; j < permissionsArr.length; j++) {
           let permission = permissionsArr[j] ?? null;
-          let insertStatement = `${i == 0 && j == 0 ?  `-- ASSIGN PRMISSIONS TO ROLE\r\n` : ``}DECLARE\r\n  V_COL_EXISTS NUMBER := 0;\r\n  V_ROLE_ID NUMBER;\r\n  V_PERMISSION_ID NUMBER;\r\n  P_APP_ID NUMBER ;\r\nBEGIN\r\n    SELECT APP_ID INTO P_APP_ID FROM APPS WHERE CODE = '${appCode}';\r\n    SELECT ROLE_ID INTO V_ROLE_ID FROM ROLES WHERE CODE= '${role}' AND APP_ID = P_APP_ID;\r\n\r\n    SELECT PERMISSION_ID INTO V_PERMISSION_ID FROM PERMISSIONS WHERE CODE = '${permission}' AND APP_ID = P_APP_ID;\r\n    SELECT COUNT(*) INTO V_COL_EXISTS FROM ROLE_PERMISSIONS WHERE ROLE_PERMISSIONS.PERMISSION_ID = V_PERMISSION_ID AND ROLE_PERMISSIONS.ROLE_ID=V_ROLE_ID;\r\n    IF ( V_COL_EXISTS = 0 ) THEN\r\n    INSERT INTO ROLE_PERMISSIONS (PERMISSION_ID,ROLE_ID, CREATE_STAMP,CREATED_BY) \r\n    VALUES (V_PERMISSION_ID, V_ROLE_ID, SYSDATE, 1);\r\n    END IF; \r\n END;\r\n /\n`;
+          let insertStatement = `${i == 0 && j == 0 ? `-- ASSIGN PRMISSIONS TO ROLE\r\n` : ``}DECLARE\r\n  V_COL_EXISTS NUMBER := 0;\r\n  V_ROLE_ID NUMBER;\r\n  V_PERMISSION_ID NUMBER;\r\n  P_APP_ID NUMBER ;\r\nBEGIN\r\n    SELECT APP_ID INTO P_APP_ID FROM APPS WHERE CODE = '${appCode}';\r\n    SELECT ROLE_ID INTO V_ROLE_ID FROM ROLES WHERE CODE= '${role}' AND APP_ID = P_APP_ID;\r\n\r\n    SELECT PERMISSION_ID INTO V_PERMISSION_ID FROM PERMISSIONS WHERE CODE = '${permission}' AND APP_ID = P_APP_ID;\r\n    SELECT COUNT(*) INTO V_COL_EXISTS FROM ROLE_PERMISSIONS WHERE ROLE_PERMISSIONS.PERMISSION_ID = V_PERMISSION_ID AND ROLE_PERMISSIONS.ROLE_ID=V_ROLE_ID;\r\n    IF ( V_COL_EXISTS = 0 ) THEN\r\n    INSERT INTO ROLE_PERMISSIONS (PERMISSION_ID,ROLE_ID, CREATE_STAMP,CREATED_BY) \r\n    VALUES (V_PERMISSION_ID, V_ROLE_ID, SYSDATE, 1);\r\n    END IF; \r\n END;\r\n /\n`;
           insertStatements.push(insertStatement);
         };
       };
@@ -121,7 +121,7 @@ export class PermissionsScriptsComponent implements OnInit {
           assignToRolesStatements.push(insertStatement);
         };
 
-        assignToRolesStatements[0] = `${i == 0 ?  `-- ASSIGN PRMISSIONS TO ROLE\r\n` : ``}SET @ROLE_ID = (SELECT ROLE_ID FROM ROLES WHERE CODE = '${role}' AND APP_ID = @APP_ID)\r\n\r\n${assignToRolesStatements[0]}`;
+        assignToRolesStatements[0] = `${i == 0 ? `-- ASSIGN PRMISSIONS TO ROLE\r\n` : ``}SET @ROLE_ID = (SELECT ROLE_ID FROM ROLES WHERE CODE = '${role}' AND APP_ID = @APP_ID)\r\n\r\n${assignToRolesStatements[0]}`;
         insertStatements.push(`${assignToRolesStatements.join('\n')}`);
         assignToRolesStatements = [];
       };
@@ -152,47 +152,40 @@ export class PermissionsScriptsComponent implements OnInit {
         const langCode = languages[j];
         const langValue = values[langCode][i];
 
-        const str = `INSERT INTO \`TRANSLATION\` (\`VALUE\`,\`LANGUAGE_CODE\`,\`CODE\`,\`TYPE\`)\r\nSELECT ${langCode === 'ar' ? 'N' : ''}'${langValue}','${langCode}', '${code}' , '${translationType}'\r\nWHERE NOT EXISTS (SELECT \`CODE\` FROM \`TRANSLATION\` WHERE \`TYPE\`='${translationType}' AND \`CODE\` = '${code}' AND LANGUAGE_CODE ='${langCode}') LIMIT 1;`;
-        let sqlStatement = j === languages.length - 1 ? `${str}\n\n` : `${str}\n`;
+        const str = `INSERT INTO \`TRANSLATION\`(\`VALUE\`,\`LANGUAGE_CODE\`,\`CODE\`,\`TYPE\`)\r\nSELECT * FROM (SELECT ${langCode === 'ar' ? 'N' : ''}'${langValue}','${langCode}', (SELECT PERMISSION_ID FROM PERMISSIONS WHERE CODE = '${code}' AND APP_ID = (SELECT APP_ID FROM APPS WHERE CODE = '${this.appCode}')), '${translationType}') AS Temp\r\nWHERE NOT EXISTS (SELECT \`CODE\` FROM TRANSLATION WHERE \`TYPE\`='${translationType}' AND \`CODE\` = (SELECT CONVERT((SELECT PERMISSION_ID FROM PERMISSIONS WHERE CODE= '${code}' AND APP_ID = (SELECT APP_ID FROM APPS WHERE CODE = '${this.appCode}')), NCHAR(50))) AND LANGUAGE_CODE ='${langCode}') LIMIT 1;\r\n`;
+        let sqlStatement = j === languages.length - 1 ? `${str}\n` : `${str}`;
 
         sqlStatements.push(sqlStatement);
       }
     };
 
-    return `-- Translation\r\n${sqlStatements.join('\n')}`;
+    return `-- Permissions Translations\r\n${sqlStatements.join('\n')}`;
   }
 
   generateOracleTranslations(codes: string, enValues: string, arValues: string, deValues: string, frValues: string): string {
     const codesArr = codes.split("\n");
     const languages = ['en', 'ar', 'de', 'fr'];
     const values = {
-      'en': enValues.split("\n"),
-      'ar': arValues.split("\n"),
-      'de': deValues.split("\n"),
-      'fr': frValues.split("\n")
+      'en': enValues?.split("\n"),
+      'ar': arValues?.split("\n"),
+      'de': deValues?.split("\n"),
+      'fr': frValues?.split("\n")
     };
     const sqlStatements = [];
 
     for (let i = 0; i < codesArr.length; i++) {
       let translationStatements = [];
+      const code = codesArr[i];
       for (let j = 0; j < languages.length; j++) {
-        const code = codesArr[i];
         const langCode = languages[j];
         const langValue = values[langCode][i];
         const translationType = this.translationType;
 
-        let translationStatement = j === 0 ?
-          `SELECT COUNT(*) INTO V_COL_EXISTS FROM TRANSLATION WHERE TRANSLATION.CODE = '${code}' AND LANGUAGE_CODE = '${langCode}' AND TYPE ='${translationType}';\r\n    IF ( V_COL_EXISTS = 0 ) THEN\r\n    INSERT INTO TRANSLATION (VALUE, LANGUAGE_CODE, CODE, TYPE) \r\n    VALUES (${langCode === 'ar' ? 'N' : ''}'${langValue}', '${langCode}', '${code}', '${translationType}');\r\n    END IF;`
-          :
-          `\r\n    SELECT COUNT(*) INTO V_COL_EXISTS FROM TRANSLATION WHERE TRANSLATION.CODE = '${code}' AND LANGUAGE_CODE = '${langCode}' AND TYPE ='${translationType}';\r\n    IF ( V_COL_EXISTS = 0 ) THEN\r\n    INSERT INTO TRANSLATION (VALUE, LANGUAGE_CODE, CODE, TYPE) \r\n    VALUES (${langCode === 'ar' ? 'N' : ''}'${langValue}', '${langCode}', '${code}', '${translationType}');\r\n    END IF;`;
-
+        let translationStatement = `\r    ${j === 0 ? '\r\n    ' : ''}SELECT COUNT(*) INTO V_COL_EXISTS FROM TRANSLATION WHERE TRANSLATION.CODE = TO_CHAR(V_PERMISSION_ID) AND LANGUAGE_CODE = '${langCode}' AND TYPE ='${translationType}';\r\n    IF ( V_COL_EXISTS = 0 ) THEN\r\n    INSERT INTO TRANSLATION (VALUE, LANGUAGE_CODE, CODE, TYPE) \r\n    VALUES (${langCode === 'ar' ? 'N' : ''}'${langValue}', '${langCode}', TO_CHAR(V_PERMISSION_ID), '${translationType}');\r\n    END IF;`;
         translationStatements.push(translationStatement);
       };
 
-      const sqlStatement = i === 0 ?
-        `-- Translation\r\nDECLARE\r\n  V_COL_EXISTS NUMBER := 0; \r\nBEGIN\r\n    ${translationStatements.join('\n')}\r\nEND;\r\n/`
-        :
-        `\nDECLARE\r\n  V_COL_EXISTS NUMBER := 0; \r\nBEGIN\r\n    ${translationStatements.join('\n')}\r\nEND;\r\n/`;
+      const sqlStatement = `${i === 0 ? '-- Permissions Translations\r\n' : '\n'}DECLARE\r\n  V_COL_EXISTS NUMBER := 0; \r\n  V_PERMISSION_ID NUMBER;\r\n  P_APP_ID NUMBER ;\r\nBEGIN\r\n    SELECT APP_ID INTO P_APP_ID FROM APPS WHERE CODE = '${this.appCode}';\r\n    SELECT PERMISSION_ID into V_PERMISSION_ID FROM PERMISSIONS WHERE CODE= '${code}' AND APP_ID = P_APP_ID;${translationStatements.join('\n')}\r\nEND;\r\n/`
       sqlStatements.push(sqlStatement);
     };
 
@@ -203,10 +196,10 @@ export class PermissionsScriptsComponent implements OnInit {
     const codesArr = codes.split("\n");
     let languages = ['en', 'ar', 'de', 'fr'];
     let values = {
-      'en': enValues.split("\n"),
-      'ar': arValues.split("\n"),
-      'de': deValues.split("\n"),
-      'fr': frValues.split("\n")
+      'en': enValues?.split("\n"),
+      'ar': arValues?.split("\n"),
+      'de': deValues?.split("\n"),
+      'fr': frValues?.split("\n")
     };
     const sqlStatements = [];
 
@@ -217,23 +210,12 @@ export class PermissionsScriptsComponent implements OnInit {
         let langCode = languages[j];
         let langValue = values[langCode][i];
 
-        let sqlStatement = j === languages.length - 1 ?
-          `IF NOT EXISTS(SELECT * FROM TRANSLATION WITH(NOLOCK) WHERE [CODE] = '${code}' AND LANGUAGE_CODE = '${langCode}' AND TYPE ='${translationType}')
-  BEGIN
-      INSERT [dbo].[TRANSLATION] ([VALUE], [LANGUAGE_CODE], [CODE], [TYPE])
-        VALUES (${langCode === 'ar' ? 'N' : ''}'${langValue}','${langCode}', '${code}', '${translationType}')
-  END\n\n`
-          :
-          `IF NOT EXISTS(SELECT * FROM TRANSLATION WITH(NOLOCK) WHERE [CODE] = '${code}' AND LANGUAGE_CODE = '${langCode}' AND TYPE ='${translationType}')
-  BEGIN
-      INSERT [dbo].[TRANSLATION] ([VALUE], [LANGUAGE_CODE], [CODE], [TYPE])
-        VALUES (${langCode === 'ar' ? 'N' : ''}'${langValue}','${langCode}', '${code}', '${translationType}')
-  END;\n`;
+        let sqlStatement = `IF NOT EXISTS(SELECT * FROM TRANSLATION WITH(NOLOCK) WHERE [CODE] = (SELECT CAST((SELECT PERMISSION_ID FROM PERMISSIONS WHERE CODE= '${code}') AS NVARCHAR(50))) AND LANGUAGE_CODE = '${langCode}' AND TYPE ='${translationType}')\r\nBEGIN\r\n    INSERT [dbo].[TRANSLATION] ([VALUE], [LANGUAGE_CODE], [CODE], [TYPE])\r\n      VALUES (${langCode === 'ar' ? 'N' : ''}'${langValue}', '${langCode}', (SELECT CAST((SELECT PERMISSION_ID FROM PERMISSIONS WHERE CODE= '${code}') AS NVARCHAR(50))), '${translationType}')\r\nEND${j === languages.length - 1 ? '\n\n' : '\n'}`;
 
         sqlStatements.push(sqlStatement);
       }
     };
 
-    return `-- Translation\r\n${sqlStatements.join('\n')}`;
+    return `-- Permissions Translations\r\n${sqlStatements.join('\n')}`;
   }
 }

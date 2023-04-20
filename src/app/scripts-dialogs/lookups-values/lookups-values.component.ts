@@ -110,10 +110,10 @@ export class LookupsValuesScriptsComponent implements OnInit {
     const codesArr = codes.split("\n");
     const languages = ['en', 'ar', 'de', 'fr'];
     const values = {
-      'en': enValues.split("\n"),
-      'ar': arValues.split("\n"),
-      'de': deValues.split("\n"),
-      'fr': frValues.split("\n")
+      'en': enValues?.split("\n"),
+      'ar': arValues?.split("\n"),
+      'de': deValues?.split("\n"),
+      'fr': frValues?.split("\n")
     };
     const sqlStatements = [];
 
@@ -138,10 +138,10 @@ export class LookupsValuesScriptsComponent implements OnInit {
     const codesArr = codes.split("\n");
     const languages = ['en', 'ar', 'de', 'fr'];
     const values = {
-      'en': enValues.split("\n"),
-      'ar': arValues.split("\n"),
-      'de': deValues.split("\n"),
-      'fr': frValues.split("\n")
+      'en': enValues?.split("\n"),
+      'ar': arValues?.split("\n"),
+      'de': deValues?.split("\n"),
+      'fr': frValues?.split("\n")
     };
     const sqlStatements = [];
 
@@ -175,10 +175,10 @@ export class LookupsValuesScriptsComponent implements OnInit {
     const codesArr = codes.split("\n");
     let languages = ['en', 'ar', 'de', 'fr'];
     let values = {
-      'en': enValues.split("\n"),
-      'ar': arValues.split("\n"),
-      'de': deValues.split("\n"),
-      'fr': frValues.split("\n")
+      'en': enValues?.split("\n"),
+      'ar': arValues?.split("\n"),
+      'de': deValues?.split("\n"),
+      'fr': frValues?.split("\n")
     };
     const sqlStatements = [];
 
